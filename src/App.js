@@ -1,25 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
-
+import React from 'react';
+import Editor from './Components/Editor';
 function App() {
+  const [mdStr, setMdStr] = React.useState(`# Welcome to markdown`);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Editor mdStr = {mdStr} setMdStr={setMdStr}/>
     </div>
   );
 }
-
 export default App;
+
+
+// https://www.npmjs.com/package/@uiw/react-markdown-editor
+// https://www.npmjs.com/package/react-split?activeTab=readme
