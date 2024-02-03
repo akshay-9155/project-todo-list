@@ -1,17 +1,15 @@
 import React from 'react'
 import MarkdownEditor from '@uiw/react-markdown-editor';
 const Editor = (props) => {
-
+    const {currentNote, updateNote} = props;
+    console.log(currentNote().body);
     return (
-        <div>
+        <div className='editor'>
             <MarkdownEditor
-                height='400px'
-                value={props.mdStr}
-                onChange={(value, viewUpdate) => {
-                    props.setMdStr(value)
-                    console.log(value)
-                }}
-            />
+                className='mkd-editor'
+                value={currentNote().body}
+                onChange={updateNote}
+                />
         </div>
     )
 }

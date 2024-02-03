@@ -1,4 +1,4 @@
-/* .split {
+.split {
   display: flex;
 }
 .gutter {
@@ -9,5 +9,89 @@
 }
 
 .gutter.gutter-horizontal {
-  background-image: url(../public/favicon.ico);
-} */
+  background-image: url(./Assets/gutterImage.jpg);
+  background-size: contain;
+}
+.Sidebar{
+  background-color: #161B22;
+  color:  #cecefa;
+  position: relative;
+}
+.sidebar--header{
+  height: 15%;
+  background-color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.sidebar--header h3{
+  font-size: 4vw;
+}
+.sidebar--header button{
+  height: 40px;
+  width: 40px;
+  font-size: 30px;
+  background-color: #555;
+  color: #eee;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.noteElements{
+  height: 85%;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+}
+.note{
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  border-radius: 10px;
+}
+.currentNote{
+  background-color: peru;
+}
+
+
+
+
+.editor{
+  height: 100vh;
+  position: relative;
+}
+.mkd-editor{
+  height: 100%;
+}
+.firstNote{
+  height: 100vh;
+  width: 100vw;
+  background-color: #222;
+  color: #cecefa;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+}
+.firstNote h1{
+  font-size: 40px;
+}
+.firstNote button{
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 25px;
+  background-color: #cecefa;
+  color: #222;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.firstNote button:hover{
+  scale: 1.1;
+}
