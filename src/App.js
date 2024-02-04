@@ -5,9 +5,15 @@ import Editor from './Components/Editor';
 import Sidebar from './Components/Sidebar';
 import Split from 'react-split'
 function App() {
-  const [notesArray, setNotesArray] = React.useState([]);
+  const clearLocalStorage = () => {
+    localStorage.clear();
+    setNotesArray([]);
+  }
+  const [notesArray, setNotesArray] = React.useState(()=> JSON.parse(localStorage.getItem("notes")) || []);
   const [currentNoteId, setCurrentNoteId] = React.useState((notesArray[0] && notesArray[0].id) || "");
-
+  React.useEffect(()=>{
+    localStorage.setItem("notes",JSON.stringify(notesArray))
+  },[notesArray])
   const createNote = () => {
     const newNote = {
       id: nanoid(),
@@ -41,7 +47,7 @@ function App() {
           direction="horizontal"
           cursor="col-resize"
         >
-          <Sidebar createNote={createNote} notesArray={notesArray} currentNoteId={currentNoteId} setCurrentNoteId={setCurrentNoteId} />
+          <Sidebar createNote={createNote} notesArray={notesArray} currentNoteId={currentNoteId} setCurrentNoteId={setCurrentNoteId} clearLocalStorage = {clearLocalStorage} />
           <Editor updateNote={updateNote} currentNote={findCurrentNote} />
         </Split> :
         <div className='firstNote'>

@@ -6,7 +6,7 @@ const Sidebar = (props) => {
             <div key={note.id} className={`note ${props.currentNoteId == note.id && "currentNote"}`}
                 onClick={() => props.setCurrentNoteId(note.id)}
             >
-                <h3>Note {index+1}</h3>
+                <h3>Note {index + 1}</h3>
             </div>
         )
     })
@@ -14,7 +14,10 @@ const Sidebar = (props) => {
         <div className='Sidebar'>
             <div className="sidebar--header">
                 <h3>Notes</h3>
-                <button className="new-note" onClick={props.createNote} >+</button>
+                <div className="sidebar-toolBar">
+                    <button className="new-note" onClick={props.createNote} >+</button>
+                    <button className="delete-all" onClick={props.clearLocalStorage}></button>
+                </div>
             </div>
             <div className="noteElements">
                 {noteElements}
