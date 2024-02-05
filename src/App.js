@@ -17,20 +17,68 @@ function App() {
   const createNote = () => {
     const newNote = {
       id: nanoid(),
-      body: "Note Title..."
+      body: "Note Title...",
+      updatedAt: Date.now()
     }
     setNotesArray(prevNotesArray => [newNote, ...prevNotesArray])
     setCurrentNoteId(newNote.id);
   }
+
+  // This was not re-arranging the most recent updated note to top
+  // const updateNote = text => {
+  //   setNotesArray(prevNotesArray => prevNotesArray.map(oldNotes => {
+  //     return (
+  //       oldNotes.id == currentNoteId ?
+  //         { ...oldNotes, body: text } :
+  //         oldNotes
+  //     )
+  //   }))
+  // }
+
+  // This re-arranges the most recent updated note to top
   const updateNote = text => {
-    setNotesArray(prevNotesArray => prevNotesArray.map(oldNotes => {
-      return (
-        oldNotes.id == currentNoteId ?
-          { ...oldNotes, body: text } :
+    setNotesArray(prevNotesArray => {
+      let updatedArray = prevNotesArray.map((oldNotes)=>{
+        return oldNotes.id === currentNoteId ?
+          {...oldNotes, body: text, updatedAt: Date.now()} :
           oldNotes
-      )
-    }))
+      })
+      updatedArray.sort((a,b) => b.updatedAt - a.updatedAt)
+      return updatedArray
+    })
   }
+
+  // Another way to re-arranges the most recent updated note to top
+  // const updateNote = text => {
+  //   setNotesArray(prevNotesArray => {
+  //     let updatedArray = [];
+  //     for(let i =  0; i< prevNotesArray.length; i++){
+  //       const oldNote = prevNotesArray[i];
+  //       oldNote.id == currentNoteId ? 
+  //       updatedArray.unshift({...oldNote, body: text, updatedAt: Date.now()}):
+  //       updatedArray.push(oldNote)
+  //     }
+  //     return updatedArray
+  //   })
+  // }
+
+  // This also re-arranges the most recent updated note to top but has some delay
+  // React.useEffect(()=>{
+  //   setNotesArray(prevNotesArray=>{
+  //     prevNotesArray.sort((a,b) => b.updatedAt - a.updatedAt)
+  //     return prevNotesArray
+  //   })
+  // },[currentNoteId])
+  // const updateNote = text => {
+  //   setNotesArray(prevNotesArray => {
+  //     let updatedArray = prevNotesArray.map((oldNotes)=>{
+  //       return oldNotes.id === currentNoteId ?
+  //         {...oldNotes, body: text, updatedAt: Date.now()} :
+  //         oldNotes
+  //     })
+  //     return updatedArray
+  //   })
+  // }
   const findCurrentNote = () => {
     return notesArray.find(note => {
       return note.id === currentNoteId
