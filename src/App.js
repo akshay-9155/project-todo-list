@@ -10,7 +10,13 @@ function App() {
     setNotesArray([]);
   }
   const [notesArray, setNotesArray] = React.useState(() => JSON.parse(localStorage.getItem("notes")) || []);
-  const [currentNoteId, setCurrentNoteId] = React.useState((notesArray[0] && notesArray[0].id) || "");
+  // This didn't stayed on current note after reloding
+  // const [currentNoteId, setCurrentNoteId] = React.useState((notesArray[0] && notesArray[0].id) || "");
+  // This now stays on current note even after reloding 
+  const [currentNoteId, setCurrentNoteId] = React.useState( (localStorage.getItem("crntNoteId") && JSON.parse(localStorage.getItem("crntNoteId"))) || (notesArray[0] && notesArray[0].id) || "");
+  React.useEffect(() => {
+    localStorage.setItem("crntNoteId", JSON.stringify(currentNoteId))
+  }, [currentNoteId])
   React.useEffect(() => {
     localStorage.setItem("notes", JSON.stringify(notesArray))
   }, [notesArray])
@@ -84,19 +90,45 @@ function App() {
       return note.id === currentNoteId
     }) || notesArray[0]
   }
+  // Function to delete a note
+  // To use this method we need to pass note to the deleteNote function in Sidebar component
+  // const deleteNote = (event, note)=>{
+  //   event.stopPropagation();
+  //   const noteIndex = notesArray.indexOf(note);
+  //   setNotesArray(prevNotesArray=>{
+  //     const updatedArray = [...prevNotesArray];
+  //     updatedArray.splice(noteIndex,1);
+  //     return updatedArray;
+  //   })
+  // }
 
+  // Another way to delete a note 
+  const deleteNote = (event, noteId)=>{
+    event.stopPropagation();
+    setNotesArray(prevNotesArray=> prevNotesArray.filter(note => note.id !== noteId))
+  }
   return (
     <div className="App">
       {notesArray.length > 0 ?
         <Split
           className='split'
           sizes={[20, 80]}
-          minSize={[200, 1000]}
+          // minSize={[200, 1000]}  // have to remove this so that split can work on mobile phone as well
           direction="horizontal"
           cursor="col-resize"
         >
-          <Sidebar createNote={createNote} notesArray={notesArray} currentNote={findCurrentNote} setCurrentNoteId={setCurrentNoteId} clearLocalStorage={clearLocalStorage} />
-          <Editor updateNote={updateNote} currentNote={findCurrentNote} />
+          <Sidebar 
+            createNote={createNote}
+            notesArray={notesArray}
+            currentNote={findCurrentNote}
+            setCurrentNoteId={setCurrentNoteId}
+            clearLocalStorage={clearLocalStorage}
+            deleteNote = {deleteNote}
+          />
+          <Editor
+            updateNote={updateNote} 
+            currentNote={findCurrentNote} 
+          />
         </Split> :
         <div className='firstNote'>
           <h1>You have no Notes</h1>

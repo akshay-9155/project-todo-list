@@ -36,20 +36,27 @@
   gap: 5px;
 }
 .sidebar-toolBar button{
-  padding: 10px;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: #555;
   color: #eee;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
-.sidebar-toolBar .delete-all{
-  width: 30px;
-  background-image: url(./Assets/delete-all.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
+.sidebar-toolBar button *{
+  height: 100%;
+  width: 100%;
+  padding: 5px;
 }
-.sidebar-toolBar .delete-all:hover {
+
+.sidebar-toolBar .delete-all .delete-all-icon{
+  color: rgb(166, 3, 3);
+}
+.sidebar-toolBar button:hover {
   transform: scale(1.1);
 }
 
@@ -85,12 +92,13 @@
   height: 60px;
   max-height: 300px;
   display: flex;
+  justify-content: space-between;
   color: #9a9fd2;
   align-items: center;
-  justify-content: start;
   font-size: 20px;
   border-radius: 10px;
   padding: 10px;
+  gap: 10px;
 }
 .currentNote{
   background-color: #9a9fd2;
@@ -100,8 +108,18 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  cursor: default;
 }
-
+.note .delete-note{
+  background: none;
+  border: none;
+}
+.note .delete-note .delete-note-icon{
+  color: rgb(166, 3, 3);
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
 
 
 
