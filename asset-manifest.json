@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/project-todo-list/static/css/main.3c6007d3.css",
-    "main.js": "/project-todo-list/static/js/main.1bfc7636.js",
+    "main.css": "/project-todo-list/static/css/main.ed6893c3.css",
+    "main.js": "/project-todo-list/static/js/main.a8ce2c99.js",
     "static/js/1983.aedb1b3f.chunk.js": "/project-todo-list/static/js/1983.aedb1b3f.chunk.js",
     "static/js/2049.242be1d0.chunk.js": "/project-todo-list/static/js/2049.242be1d0.chunk.js",
     "static/js/2742.1ff73d6a.chunk.js": "/project-todo-list/static/js/2742.1ff73d6a.chunk.js",
@@ -113,11 +113,10 @@
     "static/js/3912.fbc63411.chunk.js": "/project-todo-list/static/js/3912.fbc63411.chunk.js",
     "static/js/1483.31c3c57e.chunk.js": "/project-todo-list/static/js/1483.31c3c57e.chunk.js",
     "static/js/787.5379112f.chunk.js": "/project-todo-list/static/js/787.5379112f.chunk.js",
-    "static/media/delete-all.jpg": "/project-todo-list/static/media/delete-all.30624530b355f75be9da.jpg",
     "static/media/gutterImage.jpg": "/project-todo-list/static/media/gutterImage.b419dee42fe303f0c7ba.jpg",
     "index.html": "/project-todo-list/index.html",
-    "main.3c6007d3.css.map": "/project-todo-list/static/css/main.3c6007d3.css.map",
-    "main.1bfc7636.js.map": "/project-todo-list/static/js/main.1bfc7636.js.map",
+    "main.ed6893c3.css.map": "/project-todo-list/static/css/main.ed6893c3.css.map",
+    "main.a8ce2c99.js.map": "/project-todo-list/static/js/main.a8ce2c99.js.map",
     "1983.aedb1b3f.chunk.js.map": "/project-todo-list/static/js/1983.aedb1b3f.chunk.js.map",
     "2049.242be1d0.chunk.js.map": "/project-todo-list/static/js/2049.242be1d0.chunk.js.map",
     "2742.1ff73d6a.chunk.js.map": "/project-todo-list/static/js/2742.1ff73d6a.chunk.js.map",
@@ -231,7 +230,7 @@
     "787.5379112f.chunk.js.map": "/project-todo-list/static/js/787.5379112f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c6007d3.css",
-    "static/js/main.1bfc7636.js"
+    "static/css/main.ed6893c3.css",
+    "static/js/main.a8ce2c99.js"
   ]
 }
